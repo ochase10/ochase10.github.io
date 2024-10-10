@@ -5,20 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     {% include head-custom.html %}
-
-{% seo %}
+    {% seo %}
   </head>
+
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3LL6Q0HLCS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-3LL6Q0HLCS');
+  </script>
+
 
   <body>
 
     <header>
       <div class="container">
         <a id="a-title" href="{{ '/' | relative_url }}">
-          <h1>{{ site.title | default: site.github.repository_name }}</h1>
+          <h1>{{ page.title | default: Owen Chase }}</h1>
         </a>
-        <h2>{{ site.description | default: site.github.project_tagline }}</h2>
-
+        <h2>{{ page.header_subtitle | default: Graduate student in Astronomy at UT Austin }}</h2>
+        <div class="header-buttons">
+          <a href="{{ '/research' | relative_url }}" class="btn">Research</a>
+          <!--
+          <a href="{{ '/page2' | relative_url }}" class="btn">Page 2</a>
+                  -->
+          <a href="{{ '/contact' | relative_url }}" class="btn">Contact</a>
+        </div>
       </div>
     </header>
 
@@ -36,6 +55,14 @@
         <img src="../assets/images/psu_logo.png" alt="psu logo" class="footer-logo psu-logo">
       </div>
     </footer>
+
+    <script>
+      // JavaScript to make all external links open in a new tab
+      document.querySelectorAll('a[href^="http"]').forEach(link => {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+      });
+    </script>
 
 
   </body>

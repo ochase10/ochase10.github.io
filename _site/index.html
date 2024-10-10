@@ -4,7 +4,9 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/assets/css/style.css?v=7f233e65223f197b293d612a3a6cb8811327f0d3">
+    <link rel="stylesheet" href="/assets/css/style.css?v=70f80698d5b5808ca5166fe2737628fb1c6bf3e7">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
 
 <!-- Setup theme-color -->
@@ -33,8 +35,7 @@
 
 <!-- end custom head snippets -->
 
-
-<!-- Begin Jekyll SEO tag v2.8.0 -->
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Owen Chase | Graduate student in Astronomy at the University of Texas at Austin</title>
 <meta name="generator" content="Jekyll v3.10.0" />
 <meta property="og:title" content="Owen Chase" />
@@ -54,6 +55,18 @@
 
   </head>
 
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3LL6Q0HLCS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-3LL6Q0HLCS');
+  </script>
+
+
   <body>
 
     <header>
@@ -61,17 +74,34 @@
         <a id="a-title" href="/">
           <h1>Owen Chase</h1>
         </a>
-        <h2>Graduate student in Astronomy at the University of Texas at Austin</h2>
-
+        <h2>NSF GRFP Fellow in Astronomy at the University of Texas at Austin</h2>
+        <div class="header-buttons">
+          <a href="/research" class="btn">Research</a>
+          <!--
+          <a href="/page2" class="btn">Page 2</a>
+                  -->
+          <a href="/contact" class="btn">Contact</a>
+        </div>
       </div>
     </header>
 
     <div class="container">
       <section id="main_content">
-        <p>Hello, World
-Not Another line</p>
+        <p>Welcome to my personal webpage! 
+<img src="../assets/images/headshot.jpg" alt="Picture of Owen" style="float: left; margin-right: 20px; width: 400px;" /></p>
 
-<p>This is though</p>
+<p>My name is Owen Chase, and I am currently a second-year student in the PhD program in the Department of Astronomy at UT Austin. 
+I am also a National Science Foundation Graduate Research Fellow. 
+I hold Bachelor of Science degrees in Astronomy and Statistics from Penn State University. 
+I graduated summa cum laude from the Schreyer Honors College and Eberly College of Science in 2022.</p>
+
+<p>My primary research interests are cosmology, large-scale structure, and astrostatistics. 
+I am currently working as a member of the Hobby-Eberly Telescope Dark Energy Experiment (<a href="https://hetdex.org">HETDEX</a>) collaboration. 
+Our goal is to achieve percent level cosmological parameter constraints using the BAO signal in our catalog of &gt;1M Lyman-\(\alpha\) emitting galaxies.
+I am co-advised by Drs. Julian Muñoz and Karl Gebhardt.</p>
+
+<div style="clear: both;"></div>
+<p><!-- Clearing element --></p>
 
       </section>
     </div>
@@ -84,6 +114,14 @@ Not Another line</p>
         <img src="../assets/images/psu_logo.png" alt="psu logo" class="footer-logo psu-logo">
       </div>
     </footer>
+
+    <script>
+      // JavaScript to make all external links open in a new tab
+      document.querySelectorAll('a[href^="http"]').forEach(link => {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+      });
+    </script>
 
 
   </body>

@@ -19,7 +19,7 @@ body {
   padding: 0;
   background: $body-background url("../images/bkg.png") 0 0;
   color: $body-foreground;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.5;
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
 }
@@ -94,6 +94,28 @@ header h2 {
   display: inline-block; // Ensure the background only covers the text
   color: #ffffff;
 }
+
+
+.header-buttons {
+  margin-top: 20px; // Space between the header content and buttons
+}
+
+.header-buttons .btn {
+  display: inline-block;
+  padding: 15px 30px;
+  margin: 0 10px;
+  background-color: $ut-orange; // Button background color
+  color: #fff; // Button text color
+  text-decoration: none;
+  border-radius: 5px; // Rounded corners
+  transition: background-color 0.3s; // Smooth transition for hover effect
+  font-size: 24px
+}
+
+.header-buttons .btn:hover {
+  background-color: darken($ut-orange, 10%); // Darken the button color on hover
+}
+
 
 #downloads .btn {
   display: inline-block;
