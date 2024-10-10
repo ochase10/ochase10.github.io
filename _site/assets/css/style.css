@@ -123,6 +123,12 @@ footer { background: #3333335d; padding: 20px 0; text-align: center; color: #fff
 
 /* Links a, a:hover, a:visited
 */
+.contact-links { display: flex; justify-content: space-around; /* Distribute space evenly */ align-items: center; /* Align items vertically in the center */ margin-top: 20px; /* Add some space above the links */ }
+
+.contact-links a { text-decoration: none; /* Remove underline from links */ margin: 0 10px; /* Add some space between the links */ }
+
+.contact-links img { width: 75px; /* Adjust the size of the icons */ height: 75px; vertical-align: middle; }
+
 a { color: #63c0f5; text-shadow: 0 0 5px rgba(104, 182, 255, 0.5); }
 
 /* Clearfix */
