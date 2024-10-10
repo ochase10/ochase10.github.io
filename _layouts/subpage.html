@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3LL6Q0HLCS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3LL6Q0HLCS');
+</script>
+
+
+<body>
+  <header>
+    <div class="container">
+      <h1>{{ page.header_title }}</h1>
+      <!--<h2>{{ page.header_subtitle }}</h2>-->
+      <div class="header-buttons">
+        <a href="{{ '/' | relative_url }}" class="btn">Home</a>
+        {% for button in page.header_buttons %}
+          <a href="{{ button.url | relative_url }}" class="btn">{{ button.text }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    <section id="main_content">
+      {{ content }}
+    </section>
+  </div>
+  <footer>
+    <div class="footer-content">
+      <img src="../assets/images/ut_logo.png" alt="ut logo" class="footer-logo ut-logo">
+      <img src="../assets/images/hetdex_logo.jpg" alt="hetdex logo" class="footer-logo hetdex-logo">
+      <img src="../assets/images/psu_logo.png" alt="psu logo" class="footer-logo psu-logo">
+    </div>
+  </footer>
+
+  <script>
+    // JavaScript to make all external links open in a new tab
+    document.querySelectorAll('a[href^="http"]').forEach(link => {
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+    });
+  </script>
+
+
+</body>
+</html>
