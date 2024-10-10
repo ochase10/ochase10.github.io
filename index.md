@@ -6,7 +6,9 @@ header_subtitle: NSF GRFP Fellow in Astronomy at the University of Texas at Aust
 ---
 
 
-Welcome to my personal webpage! 
+# Welcome to my personal webpage! 
+
+
 <img src="../assets/images/headshot.jpg" alt="Picture of Owen" style="float: left; margin-right: 20px; width: 400px;">
 
 My name is Owen Chase, and I am currently a second-year student in the PhD program in the Department of Astronomy at UT Austin. 
