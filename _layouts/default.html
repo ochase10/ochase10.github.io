@@ -32,11 +32,16 @@
         </a>
         <h2>{{ page.header_subtitle | default: Graduate student in Astronomy at UT Austin }}</h2>
         <div class="header-buttons">
-          <a href="{{ '/research' | relative_url }}" class="btn">Research</a>
-          <!--
-          <a href="{{ '/page2' | relative_url }}" class="btn">Page 2</a>
-                  -->
-          <a href="{{ '/contact' | relative_url }}" class="btn">Links</a>
+          <div class="header-buttons-left">
+            <a href="{{ '/research' | relative_url }}" class="btn">Research</a>
+            <!--
+            <a href="{{ '/page2' | relative_url }}" class="btn">Page 2</a>
+                    -->
+            <a href="{{ '/contact' | relative_url }}" class="btn">Links</a>
+          </div>
+          <div class="header-buttons-right">
+            <a href="https://docs.google.com/document/d/1sxSIUc1SHd6dxjpGNuxTeqvKMAwkUhzuQel3CqaHADE/edit?usp=sharing" class="btn cv-btn" target="_blank">CV</a>
+          </div>
         </div>
       </div>
     </header>

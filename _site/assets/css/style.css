@@ -44,11 +44,19 @@ header h1:before { content: "./ "; font-size: 50px; }
 
 header h2 { font-size: 30px; font-weight: 300; background-color: rgba(0, 0, 0, 0.8); padding: 10px; display: inline-block; color: #ffffff; }
 
-.header-buttons { margin-top: 20px; }
+.header-buttons { margin-top: 20px; display: flex; justify-content: space-between; align-items: center; }
+
+.header-buttons-left { display: flex; gap: 10px; }
+
+.header-buttons-right { margin-left: auto; }
 
 .header-buttons .btn { display: inline-block; padding: 15px 30px; margin: 0 10px; background-color: #bf5700; color: #fff; text-decoration: none; border-radius: 5px; transition: background-color 0.3s; font-size: 24px; }
 
 .header-buttons .btn:hover { background-color: #8c4000; }
+
+.cv-btn { background-color: #cccccc !important; }
+
+.cv-btn:hover { background-color: #b3b3b3 !important; }
 
 #downloads .btn { display: inline-block; text-align: center; margin: 0; }
 
@@ -107,7 +115,10 @@ footer { background: #3333335d; padding: 20px 0; text-align: center; color: #fff
 /* Media queries for responsiveness */
 @media (max-width: 768px) { header h1 { font-size: 30px; margin: 0; }
   header h2 { font-size: 20px; }
-  .header-buttons .btn { padding: 8px 15px; font-size: 14px; margin: 5px 0; }
+  .header-buttons { flex-direction: column; gap: 10px; }
+  .header-buttons-left { order: 2; justify-content: center; }
+  .header-buttons-right { order: 1; margin-left: 0; align-self: flex-end; }
+  .header-buttons .btn { padding: 10px 20px; font-size: 18px; margin: 5px; }
   .footer-content { flex-direction: column; }
   .footer-logo { max-width: 40px; }
   img { width: 100%; height: auto; } }

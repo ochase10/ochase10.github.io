@@ -98,6 +98,18 @@ header h2 {
 
 .header-buttons {
   margin-top: 20px; // Space between the header content and buttons
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-buttons-left {
+  display: flex;
+  gap: 10px;
+}
+
+.header-buttons-right {
+  margin-left: auto;
 }
 
 .header-buttons .btn {
@@ -114,6 +126,14 @@ header h2 {
 
 .header-buttons .btn:hover {
   background-color: darken($ut-orange, 10%); // Darken the button color on hover
+}
+
+.cv-btn {
+  background-color: #cccccc !important; // Different color for CV button
+}
+
+.cv-btn:hover {
+  background-color: darken(#cccccc, 10%) !important; // Darken on hover
 }
 
 
@@ -277,10 +297,26 @@ footer {
     font-size: 20px;
   }
 
+  .header-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .header-buttons-left {
+    order: 2;
+    justify-content: center;
+  }
+  
+  .header-buttons-right {
+    order: 1;
+    margin-left: 0;
+    align-self: flex-end;
+  }
+  
   .header-buttons .btn {
-    padding: 8px 15px;
-    font-size: 14px;
-    margin: 5px 0;
+    padding: 10px 20px;
+    font-size: 18px;
+    margin: 5px;
   }
 
   .footer-content {
