@@ -1,7 +1,7 @@
 ---
 layout: subpage
-title: Contact
-header_title: Contact
+title: Links
+header_title: Links
 header_buttons:
 ---
 
