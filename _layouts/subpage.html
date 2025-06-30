@@ -26,10 +26,15 @@
       <h1>{{ page.header_title }}</h1>
       <!--<h2>{{ page.header_subtitle }}</h2>-->
       <div class="header-buttons">
-        <a href="{{ '/' | relative_url }}" class="btn">Home</a>
-        {% for button in page.header_buttons %}
-          <a href="{{ button.url | relative_url }}" class="btn">{{ button.text }}</a>
-        {% endfor %}
+        <div class="header-buttons-left">
+          <a href="{{ '/' | relative_url }}" class="btn">Home</a>
+          {% for button in page.header_buttons %}
+            <a href="{{ button.url | relative_url }}" class="btn">{{ button.text }}</a>
+          {% endfor %}
+        </div>
+        <div class="header-buttons-right">
+          <a href="https://docs.google.com/document/d/1sxSIUc1SHd6dxjpGNuxTeqvKMAwkUhzuQel3CqaHADE/edit?usp=sharing" class="btn cv-btn" target="_blank">CV</a>
+        </div>
       </div>
     </div>
   </header>
