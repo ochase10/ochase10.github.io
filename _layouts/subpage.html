@@ -21,10 +21,14 @@
 
 
 <body>
-  <header>
+  <header id="main-header">
     <div class="container">
-      <h1>{{ page.header_title }}</h1>
-      <!--<h2>{{ page.header_subtitle }}</h2>-->
+      <div class="header-title-section">
+        <a id="a-title" href="{{ '/' | relative_url }}">
+          <h1>{{ page.header_title }}</h1>
+        </a>
+        <h2>{{ page.header_subtitle }}</h2>
+      </div>
       <div class="header-buttons">
         <div class="header-buttons-left">
           <a href="{{ '/' | relative_url }}" class="btn">Home</a>
@@ -33,12 +37,16 @@
           {% endfor %}
         </div>
         <div class="header-buttons-right">
-          <a href="https://docs.google.com/document/d/1sxSIUc1SHd6dxjpGNuxTeqvKMAwkUhzuQel3CqaHADE/edit?usp=sharing" class="btn cv-btn" target="_blank">CV</a>
+          <a href="https://docs.google.com/document/d/1sxSIUc1SHd6dxjpGNuxTeqvKMAwkUhzuQel3CqaHADE/preview" class="btn cv-btn" target="_blank">CV</a>
         </div>
       </div>
     </div>
   </header>
-  <div class="container">
+  
+  <!-- Background with same styling as homepage -->
+  <div class="subpage-background"></div>
+  
+  <div class="container subpage-container">
     <section id="main_content">
       {{ content }}
     </section>
@@ -52,6 +60,47 @@
   </footer>
 
   <script>
+    // Dynamic header shrinking on scroll (same as homepage)
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('#main-header');
+        const scrollY = window.scrollY;
+        
+        if (scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // Expandable research tiles functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('.research-tile');
+        
+        sections.forEach(section => {
+            const header = section.querySelector('.tile-header');
+            const content = section.querySelector('.tile-content');
+            
+            if (header && content) {
+                // Click anywhere on the tile to expand (when collapsed)
+                section.addEventListener('click', function(e) {
+                    if (!section.classList.contains('expanded')) {
+                        section.classList.add('expanded');
+                        content.classList.add('expanded');
+                    }
+                });
+                
+                // Click on header to collapse (when expanded)
+                header.addEventListener('click', function(e) {
+                    if (section.classList.contains('expanded')) {
+                        e.stopPropagation(); // Prevent the tile click from firing
+                        section.classList.remove('expanded');
+                        content.classList.remove('expanded');
+                    }
+                });
+            }
+        });
+    });
+
     // JavaScript to make all external links open in a new tab
     document.querySelectorAll('a[href^="http"]').forEach(link => {
       link.setAttribute('target', '_blank');
