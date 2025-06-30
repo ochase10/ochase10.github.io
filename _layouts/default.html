@@ -25,22 +25,24 @@
 
   <body>
 
-    <header>
+    <header id="main-header">
       <div class="container">
-        <a id="a-title" href="{{ '/' | relative_url }}">
-          <h1>{{ page.title | default: Owen Chase }}</h1>
-        </a>
-        <h2>{{ page.header_subtitle | default: Graduate student in Astronomy at UT Austin }}</h2>
+        <div class="header-title-section">
+          <a id="a-title" href="{{ '/' | relative_url }}">
+            <h1>{{ page.title | default: "Owen Chase" }}</h1>
+          </a>
+          <h2>{{ page.header_subtitle | default: "NSF GRFP Fellow in Astronomy at the University of Texas at Austin" }}</h2>
+        </div>
         <div class="header-buttons">
           <div class="header-buttons-left">
             <a href="{{ '/research' | relative_url }}" class="btn">Research</a>
             <!--
             <a href="{{ '/page2' | relative_url }}" class="btn">Page 2</a>
                     -->
-            <a href="{{ '/contact' | relative_url }}" class="btn">Links</a>
+            <a href="{{ '/links' | relative_url }}" class="btn">Links</a>
           </div>
           <div class="header-buttons-right">
-            <a href="https://docs.google.com/document/d/1sxSIUc1SHd6dxjpGNuxTeqvKMAwkUhzuQel3CqaHADE/edit?usp=sharing" class="btn cv-btn" target="_blank">CV</a>
+            <a href="https://docs.google.com/document/d/1sxSIUc1SHd6dxjpGNuxTeqvKMAwkUhzuQel3CqaHADE/preview" class="btn cv-btn" target="_blank">CV</a>
           </div>
         </div>
       </div>
@@ -62,6 +64,19 @@
     </footer>
 
     <script>
+      // Header scroll animation
+      window.addEventListener('scroll', () => {
+        const header = document.getElementById('main-header');
+        const scrolled = window.pageYOffset;
+        
+        // Header scroll effect - starts shrinking immediately
+        if (scrolled > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      });
+
       // JavaScript to make all external links open in a new tab
       document.querySelectorAll('a[href^="http"]').forEach(link => {
         link.setAttribute('target', '_blank');
