@@ -13,7 +13,7 @@ header_subtitle: NSF GRFP Fellow in Astronomy at the University of Texas at Aust
         <div class="hero-text">
             <h1 class="hero-title">Owen Chase</h1>
             <p class="hero-subtitle">NSF GRFP Fellow in Astronomy</p>
-            <p class="hero-description">Exploring the cosmos through cosmology, large-scale structure, and astrostatistics</p>
+            <p class="hero-description">Working at the intersection of big data and theory to understand the past, present, and future of the cosmos</p>
         </div>
     </div>
     <div class="scroll-indicator">
@@ -27,17 +27,17 @@ header_subtitle: NSF GRFP Fellow in Astronomy at the University of Texas at Aust
         <h2 class="research-title">About Me</h2>
         
         <div class="research-text">
-            <p class="text-line">My name is Owen Chase, and I am currently a second-year student in the PhD program in the Department of Astronomy at UT Austin.</p>
+            <p class="text-line">My name is Owen Chase, and I am currently a third year PhD candidate and NSF Graduate Research Fellow in the Department of Astronomy at UT Austin where I am co-advised by Drs. Julian Muñoz and Karl Gebhardt.</p>
+
+            <p class="text-line">I graduated summa cum laude from the Penn State Schreyer Honors College and Eberly College of Science in 2022 to recieve Bachelor of Science degrees in Astronomy and Statistics. </p>            
+                        
+            <p class="text-line">My primary research interests are cosmology, large-scale structure, and astrostatistics. I am interested in the issues facing &Lambda;CDM cosmology and how modern and future large galaxy surveys can inform improved theories of cosmology. </p>
             
-            <p class="text-line">I am also a National Science Foundation Graduate Research Fellow.</p>
+            <p class="text-line">I am a member of the Hobby-Eberly Telescope Dark Energy Experiment (<a href="https://hetdex.org" target="_blank">HETDEX</a>) collaboration. Our goal is to achieve percent level cosmological parameter constraints using the BAO signal in our catalog of more than 1M Lyman-α emitting galaxies at intermediate redshifts.</p>
+
+            <p class="text-line">When I'm not searching for deep truths about the universe, I try to fill my life with joy, rest, and personal growth. I enjoy getting active with a number of sports including tennis, soccer, and bouldering. I'm always willing to try a new food spot (or return to an old favorite). I love movies and TV, some of my favorites being *Everything, Everywhere, All at Once*, *Dodgeball*, *Severance*, and *Invincible*. I also can't resist a good documentary. I hope to visit all 50 states and every continent.</p>
+
             
-            <p class="text-line">I hold Bachelor of Science degrees in Astronomy and Statistics from Penn State University. I graduated summa cum laude from the Schreyer Honors College and Eberly College of Science in 2022.</p>
-            
-            <p class="text-line">My primary research interests are cosmology, large-scale structure, and astrostatistics.</p>
-            
-            <p class="text-line">I am currently working as a member of the Hobby-Eberly Telescope Dark Energy Experiment (<a href="https://hetdex.org" target="_blank">HETDEX</a>) collaboration. Our goal is to achieve percent level cosmological parameter constraints using the BAO signal in our catalog of >1M Lyman-α emitting galaxies.</p>
-            
-            <p class="text-line">I am co-advised by Drs. Julian Muñoz and Karl Gebhardt.</p>
         </div>
     </div>
 </section>
