@@ -398,17 +398,54 @@ body {
   margin-bottom: 1rem;
 }
 
-/* Footer logo styling - maximum visibility and proper layering */
+/* Footer styling - improved layout and contact links */
 footer {
   position: relative;
   z-index: 100;
-  background: rgba(21, 21, 21, 0.90) !important;
+  background: rgba(21, 21, 21, 0.95) !important;
   backdrop-filter: blur(10px);
+  padding: 2rem 0 1rem 0;
 }
 
 .footer-content {
   position: relative;
   z-index: 101;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.footer-links a {
+  transition: transform 0.3s ease;
+}
+
+.footer-links a:hover {
+  transform: scale(1.1);
+}
+
+.footer-links img {
+  width: 70px;
+  height: 70px;
+  opacity: 1 !important;
+  filter: brightness(1) contrast(1);
+}
+
+.footer-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
 
 .footer-logo {
@@ -421,6 +458,59 @@ footer {
 
 .footer-logo:hover {
   transform: scale(1.1);
+}
+
+.footer-copyright {
+  text-align: center;
+  color: #ccc;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1rem;
+}
+
+.footer-logo:hover {
+  transform: scale(1.1);
+}
+
+/* Contact links styling for homepage */
+.contact-section {
+  position: absolute;
+  bottom: 6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  text-align: center;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.contact-links a {
+  transition: transform 0.3s ease;
+}
+
+.contact-links a:hover {
+  transform: scale(1.1);
+}
+
+.contact-links img {
+  width: 70px;
+  height: 70px;
+  opacity: 0.9;
+  filter: brightness(1) contrast(1);
+}
+
+.contact-email {
+  color: #fff;
+  font-size: 1.3rem;
+  margin-top: 0.5rem;
+  opacity: 0.9;
 }
 
 /* Media query styles for responsive design */
@@ -496,6 +586,32 @@ footer {
   .research-tile {
     margin: 1rem;
     padding: 1rem;
+  }
+  
+  .contact-links {
+    gap: 1.5rem;
+  }
+  
+  .contact-links img {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .contact-email {
+    font-size: 1.1rem;
+  }
+  
+  .footer-links {
+    gap: 1.5rem;
+  }
+  
+  .footer-links img {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .footer-logos {
+    gap: 1.5rem;
   }
 }
 

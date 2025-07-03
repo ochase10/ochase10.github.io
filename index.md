@@ -16,6 +16,22 @@ header_subtitle: NSF GRFP Fellow in Astronomy at the University of Texas at Aust
             <p class="hero-description">Working at the intersection of big data and theory to understand the past, present, and future of the cosmos</p>
         </div>
     </div>
+    <div class="contact-section">
+        <div class="contact-links">
+            <a href="https://ui.adsabs.harvard.edu/public-libraries/gQi7T4KZQ_WK4oebPVY8-g" target="_blank" rel="noopener noreferrer">
+                <img src="assets/images/ads_icon.svg" alt="ADS" />
+            </a>
+            <a href="https://github.com/ochase10" target="_blank" rel="noopener noreferrer">
+                <img src="assets/images/github_icon.png" alt="GitHub" /> 
+            </a>
+            <a href="https://www.linkedin.com/in/owen-chase-86503622a/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/images/linkedin_icon.png" alt="LinkedIn" />
+            </a>
+        </div>
+        <div class="contact-email">
+            owen.chase [at] utexas.edu
+        </div>
+    </div>
     <div class="scroll-indicator">
         <div class="scroll-arrow"></div>
     </div>
@@ -35,7 +51,7 @@ header_subtitle: NSF GRFP Fellow in Astronomy at the University of Texas at Aust
             
             <p class="text-line">I am a member of the Hobby-Eberly Telescope Dark Energy Experiment (<a href="https://hetdex.org" target="_blank">HETDEX</a>) collaboration. Our goal is to achieve percent level cosmological parameter constraints using the BAO signal in our catalog of more than 1M Lyman-α emitting galaxies at intermediate redshifts.</p>
 
-            <p class="text-line">When I'm not searching for deep truths about the universe, I try to fill my life with joy, rest, and personal growth. I enjoy getting active with a number of sports including tennis, soccer, and bouldering. I'm always willing to try a new food spot (or return to an old favorite). I love movies and TV, some of my favorites being *Everything, Everywhere, All at Once*, *Dodgeball*, *Severance*, and *Invincible*. I also can't resist a good documentary. I hope to visit all 50 states and every continent.</p>
+            <p class="text-line">When I'm not searching for deep truths about the universe, I try to fill my life with joy, rest, and personal growth. I enjoy getting active with a number of sports including tennis, soccer, and bouldering. I'm always willing to try a new food spot (or return to an old favorite). I love movies and TV, some of my favorites being <em>Everything, Everywhere, All at Once</em>, <em>Dodgeball</em>, <em>Severance</em>, and <em>Invincible</em>. I also can't resist a good documentary. A life goal of mine is to visit all 50 states and every continent.</p>
 
             
         </div>
