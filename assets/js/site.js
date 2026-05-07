@@ -114,6 +114,7 @@
     const secondCard = cards[1];
     const scrollIndicator = document.querySelector('.scroll-indicator');
     let metrics = null;
+    let ticking = false;
 
     function isTextInputActive(){
       const el = document.activeElement;
@@ -123,7 +124,7 @@
     }
 
     function toPageY(el){
-      return Math.round(window.scrollY + el.getBoundingClientRect().top);
+      return window.scrollY + el.getBoundingClientRect().top;
     }
 
     function readStackRevealPx(){
@@ -148,7 +149,7 @@
       const header = document.querySelector('header');
       const headerOffset = (header ? header.offsetHeight : 64) + 16;
       const reveal = readStackRevealPx();
-      const maxShift = Math.max(0, Math.round(firstCard.offsetHeight - reveal));
+      const maxShift = Math.max(0, firstCard.offsetHeight - reveal);
 
       // Start stacking as soon as the first card reaches the sticky ceiling.
       // This keeps visible relative motion while both cards are pinned in-frame.
@@ -166,8 +167,8 @@
 
       const span = Math.max(1, metrics.end - metrics.start);
       const progress = Math.min(1, Math.max(0, (window.scrollY - metrics.start) / span));
-      const shift = Math.round(metrics.maxShift * progress);
-      const pin = Math.max(0, Math.round(window.scrollY - metrics.start));
+      const shift = metrics.maxShift * progress;
+      const pin = Math.max(0, window.scrollY - metrics.start);
 
       stack.style.setProperty('--stack-pin', pin + 'px');
       stack.style.setProperty('--stack-shift', shift + 'px');
@@ -204,7 +205,14 @@
       });
     }
 
-    const onScroll = () => render();
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        render();
+        ticking = false;
+      });
+    };
     const onResize = () => { measure(); render(); };
 
     window.addEventListener('keydown', onKeyDown, { passive: false });

@@ -94,7 +94,7 @@ body {
   position: relative;
   --stack-shift: 0px;
   --stack-pin: 0px;
-  --stack-reveal: 56px;
+  --stack-reveal: 32px;
   padding-bottom: 3rem;
 }
 
@@ -122,7 +122,7 @@ body {
   align-items: center;
   position: relative;
   /* hero-section is now the primary card */
-  background: rgba($surface-2, 0.95);
+  background: rgba($surface-2, 0.98);
   width: calc(100% - 3rem);
   margin: 0 auto;
   border-radius: 12px;
@@ -309,7 +309,7 @@ body {
 /* Research Section */
 .research-section {
   padding: 1.25rem 1.5rem;  /* Match hero-section padding for consistent width */
-  background: rgba($surface-2, 0.95);  /* Solid tile background */
+  background: rgba($surface-2, 0.98);  /* Solid tile background */
   border: 1px solid rgba($accent, 0.18);  /* Tile border like research-tile */
   border-radius: 12px;  /* Rounded corners like tiles */
   box-shadow: $elevation-1;  /* Elevation like tiles */
@@ -400,7 +400,7 @@ body {
 
 /* Research Tile Styles */
 .research-tile {
-  background: rgba($surface-2, 0.95);
+  background: rgba($surface-2, 0.98);
   border: 1px solid rgba($accent, 0.18);
   border-radius: 12px;
   margin: 2rem 0;
@@ -417,7 +417,7 @@ body {
 }
 
 .research-tile.expanded {
-  background: rgba($surface-2, 0.98);
+  background: rgba($surface-2, 0.995);
 }
 
 .tile-header {
