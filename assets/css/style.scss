@@ -97,13 +97,14 @@ body {
 .card-stack {
   position: relative;
   --stack-shift: 0px;
-  --stack-reveal: 18px;
-  padding-bottom: 3rem;
+  --stack-reveal: 12px;
+  --stack-tail: 0px;
+  padding-bottom: calc(3rem + var(--stack-tail));
 }
 
 .stack-card {
   position: sticky;
-  top: calc(#{$header-height} + 0.75rem);
+  top: calc(#{$header-height} + 0.5rem);
   will-change: transform;
 }
 
@@ -113,31 +114,28 @@ body {
 
 .card-stack .stack-card + .stack-card {
   z-index: 20;
-  top: calc(#{$header-height} + 0.75rem + var(--stack-reveal));
+  top: calc(#{$header-height} + 0.5rem + var(--stack-reveal));
   transform: translateY(calc(-1 * var(--stack-shift)));
 }
 
 /* Hero Section Styles */
 .hero-section {
-  min-height: 58vh; /* compact hero to reduce excess vertical space */
+  min-height: 48vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
-  /* hero-section is now the primary card */
   background: rgba($surface-2, 0.99);
   width: calc(100% - 3rem);
   margin: 0 auto;
   border-radius: 12px;
-  padding: 1.25rem 1.5rem;
+  padding: 0.9rem 1.25rem;
   box-shadow: $elevation-1;
   border: 1px solid rgba($accent, 0.18);
   backdrop-filter: blur(10px);
   overflow: visible;
 }
-
-/* removed hero background pseudo-element so hero card is the primary surface */
 
 .hero-content {
   display: flex;
@@ -146,17 +144,12 @@ body {
   gap: 2.25rem;
   width: calc(100% - 3rem);
   max-width: 1200px;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   z-index: 2;
   position: relative;
   margin: 0 auto;
-}
-
-/* Inner hero content sits on the hero-section card */
-.hero-content {
   background: transparent;
   border-radius: 0;
-  padding: 0;
   box-shadow: none;
   border: none;
 }
@@ -167,13 +160,13 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 0.25rem;
+  padding-top: 0;
 }
 
 .hero-contact {
-  margin-top: 0.8rem;
+  margin-top: 0.5rem;
   display: flex;
-  flex-direction: column; /* icons above email */
+  flex-direction: column;
   align-items: center;
   gap: 0.5rem;
 }
@@ -186,7 +179,7 @@ body {
 
 .contact-links img {
   width: 28px;
-  height: auto; /* preserve aspect ratio */
+  height: auto;
   display: inline-block;
 }
 
@@ -208,6 +201,72 @@ body {
   border: 3px solid $accent;
   box-shadow: 0 12px 30px rgba(0,0,0,0.45);
   animation: none;
+}
+
+.hero-text {
+  max-width: 600px;
+}
+
+/* Subtle vignette and texture for hero card to add visual interest */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background-image: radial-gradient(1200px 600px at 10% 10%, rgba($accent, 0.03), transparent 20%),
+                    linear-gradient(180deg, rgba(255,255,255,0.015), transparent 40%);
+  mix-blend-mode: overlay;
+}
+
+/* Accent underline for hero title */
+.hero-title {
+  position: relative;
+}
+.hero-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.5rem;
+  height: 4px;
+  width: 60px;
+  background: $accent;
+  border-radius: 4px;
+  opacity: 0.95;
+}
+
+.hero-title {
+  font-size: 3.2rem !important;
+  margin: 0 0 1rem 0;
+  color: $accent;
+  text-shadow: none;
+  animation: slideInRight 1s ease-out;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem !important;
+  margin: 0 0 1.5rem 0;
+  color: $muted;
+  opacity: 0.9;
+  animation: slideInRight 1s ease-out 0.3s both;
+}
+
+.hero-description {
+  font-size: 1.05rem !important;
+  color: $muted;
+  line-height: 1.5;
+  animation: slideInRight 0.85s ease-out 0.3s both;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes float {

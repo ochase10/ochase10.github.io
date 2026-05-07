@@ -129,7 +129,7 @@
     function readStackRevealPx(){
       const raw = getComputedStyle(stack).getPropertyValue('--stack-reveal').trim();
       const parsed = Number.parseFloat(raw.replace('px', ''));
-      return Number.isFinite(parsed) ? parsed : 56;
+      return Number.isFinite(parsed) ? parsed : 12;
     }
 
     function isDesktop(){
@@ -138,6 +138,7 @@
 
     function measure(){
       stack.style.setProperty('--stack-shift', '0px');
+      stack.style.setProperty('--stack-tail', '0px');
       if (!isDesktop()){
         metrics = null;
         return;
@@ -148,6 +149,9 @@
       const headerOffset = (header ? header.offsetHeight : 64) + 16;
       const reveal = readStackRevealPx();
       const maxShift = Math.max(0, firstCard.offsetHeight - reveal);
+      const tail = Math.max(window.innerHeight * 0.85, maxShift + headerOffset + 80);
+
+      stack.style.setProperty('--stack-tail', tail + 'px');
 
       // Start stacking as soon as the first card reaches the sticky ceiling.
       // This keeps visible relative motion while both cards are pinned in-frame.
