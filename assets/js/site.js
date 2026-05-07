@@ -148,11 +148,10 @@
       const headerOffset = (header ? header.offsetHeight : 64) + 16;
       const reveal = readStackRevealPx();
       const maxShift = Math.max(0, Math.round(firstCard.offsetHeight - reveal));
-      const secondTop = toPageY(secondCard);
-      const secondStickyOffset = headerOffset + reveal;
 
-      // Start stacking once the second card reaches its sticky anchor.
-      const start = Math.max(0, secondTop - secondStickyOffset);
+      // Start stacking as soon as the first card reaches the sticky ceiling.
+      // This keeps visible relative motion while both cards are pinned in-frame.
+      const start = Math.max(0, firstTop - headerOffset);
       const end = start + maxShift;
 
       metrics = { start, end, maxShift };
