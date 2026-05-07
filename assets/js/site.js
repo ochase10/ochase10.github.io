@@ -103,10 +103,84 @@
     return mh;
   }
 
+  function setupCardStackNavigation(){
+    const stack = document.querySelector('[data-card-stack]');
+    if (!stack) return;
+
+    const cards = Array.from(stack.querySelectorAll('[data-card]'));
+    if (cards.length < 2) return;
+
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+
+    function isTextInputActive(){
+      const el = document.activeElement;
+      if (!el) return false;
+      const tag = (el.tagName || '').toUpperCase();
+      return tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || el.isContentEditable;
+    }
+
+    function cardTopTarget(card){
+      const cardRect = card.getBoundingClientRect();
+      const stickyTop = parseFloat(getComputedStyle(card).top) || 0;
+      return Math.max(0, Math.round(window.scrollY + cardRect.top - stickyTop));
+    }
+
+    function getTargets(){
+      return cards.map(cardTopTarget);
+    }
+
+    function scrollToCard(index){
+      const targets = getTargets();
+      if (index < 0 || index >= targets.length) return;
+      window.scrollTo({ top: targets[index], behavior: 'smooth' });
+    }
+
+    function onKeyDown(e){
+      const isDown = e.key === 'ArrowDown' || e.key === ' ' || e.code === 'Space';
+      if (!isDown || isTextInputActive()) return;
+
+      const currentY = window.scrollY;
+      const targets = getTargets();
+      const threshold = 10;
+
+      const next = targets.find(t => t > currentY + threshold);
+      const target = next !== undefined ? next : targets[targets.length - 1];
+
+      if (Math.abs(target - currentY) < threshold) return;
+
+      e.preventDefault();
+      window.scrollTo({ top: target, behavior: 'smooth' });
+    }
+
+    function updateIndicatorVisibility(){
+      if (!scrollIndicator) return;
+      const targets = getTargets();
+      const firstTarget = targets[0] || 0;
+      const secondTarget = targets[1] || firstTarget;
+      const hideAt = Math.max(firstTarget, secondTarget - 40);
+      const shouldHide = window.scrollY >= hideAt;
+      scrollIndicator.style.opacity = shouldHide ? '0' : '1';
+      scrollIndicator.style.pointerEvents = shouldHide ? 'none' : 'auto';
+    }
+
+    if (scrollIndicator){
+      scrollIndicator.addEventListener('click', function(){
+        scrollToCard(1);
+      });
+    }
+
+    window.addEventListener('keydown', onKeyDown, { passive: false });
+    window.addEventListener('scroll', updateIndicatorVisibility, { passive: true });
+    window.addEventListener('resize', updateIndicatorVisibility);
+
+    updateIndicatorVisibility();
+  }
+
   document.addEventListener('DOMContentLoaded', function(){
     // initial behaviors
     enhanceExternalLinks();
     setupResearchTiles();
+    setupCardStackNavigation();
   });
 
 })();

@@ -5,7 +5,8 @@ header_subtitle: NSF GRFP Fellow in Astronomy at the University of Texas at Aust
 ---
 
 <!-- Hero Section -->
-<section class="hero-section">
+<div class="card-stack" data-card-stack>
+<section class="hero-section stack-card" data-card>
     <div class="hero-inner">
       <div class="hero-content">
           <div class="hero-image">
@@ -40,7 +41,7 @@ header_subtitle: NSF GRFP Fellow in Astronomy at the University of Texas at Aust
 </section>
 
 <!-- Research/About Section -->
-<section id="research-section" class="research-section">
+<section id="research-section" class="research-section stack-card" data-card>
     <div class="research-content">
         <h2 class="research-title">About Me</h2>
         
@@ -57,78 +58,4 @@ header_subtitle: NSF GRFP Fellow in Astronomy at the University of Texas at Aust
         </div>
     </div>
 </section>
-
-<script>
-// Research section fade animation on scroll
-const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        const section = entry.target;
-        const textLines = section.querySelectorAll('.text-line');
-        
-        if (entry.isIntersecting) {
-            section.classList.add('fade-in');
-            textLines.forEach((line, index) => {
-                setTimeout(() => {
-                    line.style.opacity = '1';
-                    line.style.transform = 'translateY(0)';
-                }, index * 100 + 150);
-            });
-        } else {
-            section.classList.remove('fade-in');
-            textLines.forEach((line) => {
-                line.style.opacity = '0';
-                line.style.transform = 'translateY(30px)';
-            });
-        }
-    });
-}, observerOptions);
-
-const researchSection = document.getElementById('research-section');
-if (researchSection) {
-    observer.observe(researchSection);
-}
-
-// Smooth scroll for arrow
-const scrollIndicator = document.querySelector('.scroll-indicator');
-if (scrollIndicator) {
-    scrollIndicator.addEventListener('click', function() {
-        const researchSection = document.getElementById('research-section');
-        if (researchSection) {
-            researchSection.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-}
-
-// Hide/show scroll arrow on scroll
-window.addEventListener('scroll', function() {
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    const heroSection = document.querySelector('.hero-section');
-    
-    if (scrollIndicator && heroSection) {
-        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-        const threshold = Math.max(heroBottom - 100, 0);
-        
-        if (window.scrollY > threshold) {
-            scrollIndicator.style.opacity = '0';
-            scrollIndicator.style.pointerEvents = 'none';
-        } else {
-            scrollIndicator.style.opacity = '1';
-            scrollIndicator.style.pointerEvents = 'auto';
-        }
-    }
-});
-
-// Ensure scroll indicator is visible on page load
-window.addEventListener('load', function() {
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    if (scrollIndicator) {
-        scrollIndicator.style.opacity = '1';
-        scrollIndicator.style.pointerEvents = 'auto';
-    }
-});
-</script>
+</div>
