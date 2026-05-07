@@ -185,6 +185,34 @@ body {
   max-width: 600px;
 }
 
+/* Subtle vignette and texture for hero card to add visual interest */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background-image: radial-gradient(1200px 600px at 10% 10%, rgba($accent, 0.03), transparent 20%),
+                    linear-gradient(180deg, rgba(255,255,255,0.015), transparent 40%);
+  mix-blend-mode: overlay;
+}
+
+/* Accent underline for hero title */
+.hero-title {
+  position: relative;
+}
+.hero-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.5rem;
+  height: 4px;
+  width: 60px;
+  background: $accent;
+  border-radius: 4px;
+  opacity: 0.95;
+}
+
 .hero-title {
   font-size: 3.2rem !important;
   margin: 0 0 1rem 0;
