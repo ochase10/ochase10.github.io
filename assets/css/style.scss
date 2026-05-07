@@ -97,32 +97,19 @@ body {
   overflow: hidden;
 }
 
-.hero-section::before {
-  content: '';
-  position: fixed;  /* Changed to fixed to ensure edge-to-edge coverage */
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100vw;  /* Full viewport width */
-  height: 100vh;  /* Full viewport height */
-  background: url('../images/euclid_header_bkg.jpg') center/cover;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.25;  /* Increased from 0.1 to make it more visible */
-  z-index: 1;
-}
+/* removed hero background pseudo-element so hero card is the primary surface */
 
 .hero-content {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 2.25rem;
+  width: calc(100% - 3rem);
   max-width: 1200px;
   padding: 0 1.5rem;
   z-index: 2;
   position: relative;
+  margin: 0 auto;
 }
 
 /* Solid card behind the hero content to hold profile and name */
@@ -131,7 +118,7 @@ body {
   border-radius: 12px;
   padding: 1.25rem 1.5rem;
   box-shadow: $elevation-1;
-  border: 1px solid rgba(255,107,53,0.06);
+  border: 1px solid rgba($accent, 0.06);
 }
 
 .hero-inner {
@@ -179,7 +166,7 @@ body {
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid $accent;
-  box-shadow: 0 0 30px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.45);
   animation: float 6s ease-in-out infinite;
 }
 
@@ -196,7 +183,7 @@ body {
   font-size: 3.2rem !important;
   margin: 0 0 1rem 0;
   color: $accent;
-  text-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+  text-shadow: none;
   animation: slideInRight 1s ease-out;
 }
 
