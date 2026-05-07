@@ -138,6 +138,7 @@
 
     function measure(){
       stack.style.setProperty('--stack-shift', '0px');
+      stack.style.setProperty('--stack-pin', '0px');
       if (!isDesktop()){
         metrics = null;
         return;
@@ -154,7 +155,7 @@
       const start = Math.max(0, firstTop - headerOffset);
       const end = start + maxShift;
 
-      metrics = { start, end, maxShift };
+      metrics = { start, end, maxShift, firstTop, headerOffset };
     }
 
     function render(){
@@ -166,6 +167,9 @@
       const span = Math.max(1, metrics.end - metrics.start);
       const progress = Math.min(1, Math.max(0, (window.scrollY - metrics.start) / span));
       const shift = Math.round(metrics.maxShift * progress);
+      const pin = Math.max(0, Math.round(window.scrollY - metrics.start));
+
+      stack.style.setProperty('--stack-pin', pin + 'px');
       stack.style.setProperty('--stack-shift', shift + 'px');
 
       if (scrollIndicator){

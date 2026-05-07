@@ -93,13 +93,14 @@ body {
 .card-stack {
   position: relative;
   --stack-shift: 0px;
+  --stack-pin: 0px;
   --stack-reveal: 56px;
   padding-bottom: 3rem;
 }
 
 .stack-card {
-  position: sticky;
-  top: calc(#{$header-height} + 1rem);
+  position: relative;
+  transform: translateY(var(--stack-pin));
   will-change: transform;
 }
 
@@ -109,9 +110,7 @@ body {
 
 .card-stack .stack-card + .stack-card {
   z-index: 20;
-  top: calc(#{$header-height} + 1rem + var(--stack-reveal));
-  transform: translateY(calc(-1 * var(--stack-shift)));
-  transition: transform 0.1s linear;
+  transform: translateY(calc(var(--stack-pin) - var(--stack-shift)));
 }
 
 /* Hero Section Styles */
@@ -636,11 +635,12 @@ footer {
   .card-stack {
     padding-bottom: 1.25rem;
     --stack-shift: 0px;
+    --stack-pin: 0px;
   }
 
+  .stack-card,
   .card-stack .stack-card + .stack-card {
     transform: none;
-    transition: none;
   }
 
   header {
