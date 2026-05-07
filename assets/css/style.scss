@@ -92,22 +92,24 @@ body {
 /* Reusable stacked-card system (homepage now, easy to reuse elsewhere) */
 .card-stack {
   position: relative;
+  --stack-shift: 0px;
+  --stack-reveal: 56px;
   padding-bottom: 3rem;
 }
 
 .stack-card {
-  position: sticky;
-  top: calc(#{$header-height} + 1rem);
+  position: relative;
+  will-change: transform;
 }
 
-.card-stack .stack-card:nth-of-type(1) {
+.card-stack .stack-card:first-of-type {
   z-index: 10;
-  top: calc(#{$header-height} + 1rem);
 }
 
-.card-stack .stack-card:nth-of-type(2) {
+.card-stack .stack-card + .stack-card {
   z-index: 20;
-  top: calc(#{$header-height} + 1.85rem); /* leave a thin strip of previous card visible */
+  transform: translateY(calc(-1 * var(--stack-shift)));
+  transition: transform 0.1s linear;
 }
 
 /* Hero Section Styles */
@@ -312,7 +314,7 @@ body {
   box-shadow: $elevation-1;  /* Elevation like tiles */
   backdrop-filter: blur(10px);  /* Glass-morphism like tiles */
   width: calc(100% - 3rem);
-  margin: 3rem auto 0 auto;  /* initial separation before stacking overlap begins */
+  margin: 3rem auto 0 auto;  /* initial separation before stack transform */
   position: relative;
   overflow: visible;
   z-index: 2;  /* Ensure it's above the background image */
@@ -631,14 +633,12 @@ footer {
 @media (max-width: 768px) {
   .card-stack {
     padding-bottom: 1.25rem;
+    --stack-shift: 0px;
   }
 
-  .stack-card,
-  .card-stack .stack-card:nth-of-type(1),
-  .card-stack .stack-card:nth-of-type(2) {
-    position: relative;
-    top: auto;
-    z-index: auto;
+  .card-stack .stack-card + .stack-card {
+    transform: none;
+    transition: none;
   }
 
   header {

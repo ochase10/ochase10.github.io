@@ -110,7 +110,10 @@
     const cards = Array.from(stack.querySelectorAll('[data-card]'));
     if (cards.length < 2) return;
 
+    const firstCard = cards[0];
+    const secondCard = cards[1];
     const scrollIndicator = document.querySelector('.scroll-indicator');
+    let metrics = null;
 
     function isTextInputActive(){
       const el = document.activeElement;
@@ -119,61 +122,92 @@
       return tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || el.isContentEditable;
     }
 
-    function cardTopTarget(card){
-      const cardRect = card.getBoundingClientRect();
-      const stickyTop = parseFloat(getComputedStyle(card).top) || 0;
-      return Math.max(0, Math.round(window.scrollY + cardRect.top - stickyTop));
+    function toPageY(el){
+      return Math.round(window.scrollY + el.getBoundingClientRect().top);
     }
 
-    function getTargets(){
-      return cards.map(cardTopTarget);
+    function readStackRevealPx(){
+      const raw = getComputedStyle(stack).getPropertyValue('--stack-reveal').trim();
+      const parsed = Number.parseFloat(raw.replace('px', ''));
+      return Number.isFinite(parsed) ? parsed : 56;
     }
 
-    function scrollToCard(index){
-      const targets = getTargets();
-      if (index < 0 || index >= targets.length) return;
-      window.scrollTo({ top: targets[index], behavior: 'smooth' });
+    function isDesktop(){
+      return window.matchMedia('(min-width: 769px)').matches;
+    }
+
+    function measure(){
+      stack.style.setProperty('--stack-shift', '0px');
+      if (!isDesktop()){
+        metrics = null;
+        return;
+      }
+
+      const firstTop = toPageY(firstCard);
+      const header = document.querySelector('header');
+      const headerOffset = (header ? header.offsetHeight : 64) + 16;
+      const reveal = readStackRevealPx();
+      const maxShift = Math.max(0, Math.round(firstCard.offsetHeight - reveal));
+
+      // Start stacking as the first card reaches the header threshold.
+      const start = Math.max(0, firstTop - headerOffset);
+      const end = start + maxShift;
+
+      metrics = { start, end, maxShift };
+    }
+
+    function render(){
+      if (!metrics){
+        stack.style.setProperty('--stack-shift', '0px');
+        return;
+      }
+
+      const span = Math.max(1, metrics.end - metrics.start);
+      const progress = Math.min(1, Math.max(0, (window.scrollY - metrics.start) / span));
+      const shift = Math.round(metrics.maxShift * progress);
+      stack.style.setProperty('--stack-shift', shift + 'px');
+
+      if (scrollIndicator){
+        const shouldHide = progress > 0.08;
+        scrollIndicator.style.opacity = shouldHide ? '0' : '1';
+        scrollIndicator.style.pointerEvents = shouldHide ? 'none' : 'auto';
+      }
+    }
+
+    function scrollToStacked(){
+      if (!metrics) measure();
+      if (!metrics) return;
+      window.scrollTo({ top: metrics.end, behavior: 'smooth' });
     }
 
     function onKeyDown(e){
       const isDown = e.key === 'ArrowDown' || e.key === ' ' || e.code === 'Space';
       if (!isDown || isTextInputActive()) return;
+      if (!metrics) measure();
+      if (!metrics) return;
 
-      const currentY = window.scrollY;
-      const targets = getTargets();
       const threshold = 10;
-
-      const next = targets.find(t => t > currentY + threshold);
-      const target = next !== undefined ? next : targets[targets.length - 1];
-
-      if (Math.abs(target - currentY) < threshold) return;
-
-      e.preventDefault();
-      window.scrollTo({ top: target, behavior: 'smooth' });
-    }
-
-    function updateIndicatorVisibility(){
-      if (!scrollIndicator) return;
-      const targets = getTargets();
-      const firstTarget = targets[0] || 0;
-      const secondTarget = targets[1] || firstTarget;
-      const hideAt = Math.max(firstTarget, secondTarget - 40);
-      const shouldHide = window.scrollY >= hideAt;
-      scrollIndicator.style.opacity = shouldHide ? '0' : '1';
-      scrollIndicator.style.pointerEvents = shouldHide ? 'none' : 'auto';
+      if (window.scrollY < metrics.end - threshold){
+        e.preventDefault();
+        window.scrollTo({ top: metrics.end, behavior: 'smooth' });
+      }
     }
 
     if (scrollIndicator){
       scrollIndicator.addEventListener('click', function(){
-        scrollToCard(1);
+        scrollToStacked();
       });
     }
 
-    window.addEventListener('keydown', onKeyDown, { passive: false });
-    window.addEventListener('scroll', updateIndicatorVisibility, { passive: true });
-    window.addEventListener('resize', updateIndicatorVisibility);
+    const onScroll = () => render();
+    const onResize = () => { measure(); render(); };
 
-    updateIndicatorVisibility();
+    window.addEventListener('keydown', onKeyDown, { passive: false });
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
+
+    measure();
+    render();
   }
 
   document.addEventListener('DOMContentLoaded', function(){
