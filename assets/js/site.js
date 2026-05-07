@@ -56,6 +56,22 @@
         }
       }
 
+      // Helper to recalculate height if tile is expanded
+      function recalculateHeight(){
+        if (section.classList.contains('expanded')){
+          const h = content.scrollHeight;
+          content.style.maxHeight = h + 'px';
+        }
+      }
+
+      // Add ResizeObserver to recalculate height when content changes
+      if (window.ResizeObserver){
+        const resizeObserver = new ResizeObserver(() => {
+          recalculateHeight();
+        });
+        resizeObserver.observe(content);
+      }
+
       // Click anywhere on the tile toggles
       section.addEventListener('click', function(e){
         toggleSection();

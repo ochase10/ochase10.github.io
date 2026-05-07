@@ -98,13 +98,14 @@ body {
   align-items: center;
   position: relative;
   /* hero-section is now the primary card */
-  background: $surface-2;
+  background: rgba($surface-2, 0.95);
   width: calc(100% - 3rem);
   margin: 0 auto;
   border-radius: 12px;
   padding: 1.25rem 1.5rem;
   box-shadow: $elevation-1;
-  border: 1px solid rgba($accent, 0.06);
+  border: 1px solid rgba($accent, 0.18);
+  backdrop-filter: blur(10px);
   overflow: visible;
 }
 
@@ -288,8 +289,9 @@ body {
   position: relative;
   overflow: visible;
   z-index: 2;  /* Ensure it's above the background image */
-  opacity: 0;  /* Start invisible */
+  opacity: 0 !important;  /* Start invisible */
   transition: opacity 1s ease-out;  /* Smooth opacity transition */
+  pointer-events: none;  /* Prevent interaction while hidden */
 }
 
 .research-section::before {
@@ -304,7 +306,8 @@ body {
 }
 
 .research-section.fade-in {
-  opacity: 1;  /* Fully visible when fade-in class is added */
+  opacity: 1 !important;  /* Fully visible when fade-in class is added */
+  pointer-events: auto;  /* Re-enable interaction when visible */
 }
 
 .research-content {
@@ -428,7 +431,7 @@ body {
 }
 
 .tile-content.expanded {
-  max-height: 2000px; /* JS will set exact scrollHeight inline for smoothness */
+  /* JS will set exact max-height to scrollHeight dynamically */
 }
 
 /* Media support inside tiles */
