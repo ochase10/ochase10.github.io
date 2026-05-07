@@ -17,7 +17,8 @@ $container-max-width: 1000px;
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(180deg, #121212 0%, #151515 45%, #121212 100%);
+  background: linear-gradient(180deg, #0f0f0f 0%, #121212 25%, #141414 50%, #121212 75%, #0f0f0f 100%);
+  background-attachment: fixed;
   color: $body-foreground;
   font-size: 16px;
   line-height: 1.6;
@@ -50,21 +51,22 @@ li {
 /* Header */
 
 #main-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
   width: 100%;
   padding: 12px 0;
-  margin-bottom: 24px;
-  background: rgba(12, 12, 12, 0.85);
+  background: rgba(12, 12, 12, 0.88);
   border-bottom: 1px solid rgba(191, 87, 0, 0.3);
   backdrop-filter: blur(10px);
-  transition: padding 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+  transition: padding 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 #main-header.scrolled {
   padding: 8px 0;
-  background: rgba(10, 10, 10, 0.93);
+  background: rgba(10, 10, 10, 0.94);
   border-bottom-color: rgba(191, 87, 0, 0.45);
 }
 
@@ -141,6 +143,7 @@ li {
   width: 100%;
   -webkit-font-smoothing: antialiased;
   padding: 20px 0;
+  padding-top: 100px;
 }
 
 section img {
@@ -335,7 +338,10 @@ footer {
 @media (max-width: 768px) {
   #main-header {
     padding: 10px 0;
-    margin-bottom: 20px;
+  }
+
+  #main_content {
+    padding-top: 80px;
   }
 
   .header-shell {
@@ -385,12 +391,22 @@ footer {
     width: 100%;
     height: auto;
   }
+
+  .hero-section {
+    padding: 40px 15px 30px 15px;
+    padding-top: 120px;
+    margin-top: -60px;
+    gap: 30px;
+  }
 }
 
 @media (max-width: 480px) {
   #main-header {
     padding: 9px 0;
-    margin-bottom: 16px;
+  }
+
+  #main_content {
+    padding-top: 70px;
   }
 
   .header-shell {
@@ -464,6 +480,58 @@ footer {
 
   #main_content {
     padding: 15px 0;
+  }
+
+  .hero-section {
+    min-height: auto;
+    padding: 20px 12px;
+    padding-top: 100px;
+    margin-top: -50px;
+    gap: 20px;
+  }
+
+  .profile-img {
+    width: 160px;
+    height: 160px;
+    border-width: 2px;
+  }
+
+  .hero-title {
+    font-size: 26px;
+    margin-bottom: 15px;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+  }
+
+  .hero-description {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .contact-email {
+    font-size: 12px;
+  }
+
+  .research-section {
+    padding: 25px 15px;
+    margin: 20px 0;
+    border-width: 1px;
+  }
+
+  .research-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .research-text {
+    gap: 10px;
+  }
+
+  .text-line {
+    font-size: 15px;
+    line-height: 1.6;
   }
 }
 
@@ -571,8 +639,10 @@ a:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px 20px;
+  padding: 60px 20px 40px 20px;
   gap: 40px;
+  margin-top: -80px;
+  padding-top: 140px;
 }
 
 .hero-content {

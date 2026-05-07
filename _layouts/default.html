@@ -72,18 +72,21 @@
     </footer>
 
     <script>
-      // Header scroll animation
-      window.addEventListener('scroll', () => {
-        const header = document.getElementById('main-header');
-        const scrolled = window.pageYOffset;
+      // Header scroll effect with smooth transition
+      const mainHeader = document.getElementById('main-header');
+      let lastScrollTop = 0;
+      
+      window.addEventListener('scroll', function() {
+        const scrolled = window.scrollY;
         
-        // Header scroll effect - starts shrinking immediately
-        if (scrolled > 50) {
-          header.classList.add('scrolled');
+        // Apply scrolled state when user scrolls down
+        if (scrolled > 80) {
+          mainHeader.classList.add('scrolled');
         } else {
-          header.classList.remove('scrolled');
+          mainHeader.classList.remove('scrolled');
         }
-      });
+        lastScrollTop = scrolled;
+      }, false);
 
       // JavaScript to make all external links open in a new tab
       document.querySelectorAll('a[href^="http"]').forEach(link => {
