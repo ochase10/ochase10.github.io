@@ -82,6 +82,11 @@ header h2 {
 /* Ensure body has top padding to account for fixed header */
 body {
   padding-top: $header-height;
+  background-color: $surface;
+  background-image: radial-gradient(1200px 600px at 10% 10%, rgba($accent, 0.03), transparent 20%), linear-gradient(180deg, rgba(255,255,255,0.02), transparent 40%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cg fill='%23222222' fill-opacity='0.02'%3E%3Crect width='100' height='100'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: repeat;
 }
 
 /* Hero Section Styles */
@@ -345,13 +350,13 @@ body {
 
 /* Subpage Styles */
 .subpage-background {
-  /* Use the same surface across subpages; remove fixed image */
+  /* Use body background; make transparent so body texture shows through */
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: $surface;
+  background: transparent;
   opacity: 1;
   z-index: 0;
 }

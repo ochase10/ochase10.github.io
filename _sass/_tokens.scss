@@ -1,12 +1,12 @@
 // Design tokens for material-inspired dark theme
 $accent: #2ecc71 !default; // vivid green accent
-$surface: #222426 !default; // darker surface for less lightness
-$surface-2: #2a2d2f !default;
+$surface: #141617 !default; // darker background surface for better contrast
+$surface-2: #272a2c !default; // slightly lighter card surface
 $text: #ffffff !default;
 $muted: #cfcfcf !default;
 $border: rgba($accent, 0.12) !default;
 $radius: 8px !default;
-$elevation-1: 0 4px 12px rgba(0,0,0,0.35) !default;
+$elevation-1: 0 6px 20px rgba(0,0,0,0.45) !default;
 $spacing-unit: 1rem !default;
 
 // Header sizing
