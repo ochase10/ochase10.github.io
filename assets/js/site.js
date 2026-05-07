@@ -111,7 +111,6 @@
     if (cards.length < 2) return;
 
     const firstCard = cards[0];
-    const secondCard = cards[1];
     const scrollIndicator = document.querySelector('.scroll-indicator');
     let metrics = null;
     let ticking = false;
@@ -139,7 +138,6 @@
 
     function measure(){
       stack.style.setProperty('--stack-shift', '0px');
-      stack.style.setProperty('--stack-pin', '0px');
       if (!isDesktop()){
         metrics = null;
         return;
@@ -156,7 +154,7 @@
       const start = Math.max(0, firstTop - headerOffset);
       const end = start + maxShift;
 
-      metrics = { start, end, maxShift, firstTop, headerOffset };
+      metrics = { start, end, maxShift };
     }
 
     function render(){
@@ -168,9 +166,6 @@
       const span = Math.max(1, metrics.end - metrics.start);
       const progress = Math.min(1, Math.max(0, (window.scrollY - metrics.start) / span));
       const shift = metrics.maxShift * progress;
-      const pin = Math.max(0, window.scrollY - metrics.start);
-
-      stack.style.setProperty('--stack-pin', pin + 'px');
       stack.style.setProperty('--stack-shift', shift + 'px');
 
       if (scrollIndicator){

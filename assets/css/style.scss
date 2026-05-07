@@ -89,18 +89,21 @@ body {
   background-repeat: repeat;
 }
 
+#main_content {
+  padding-top: 0.75rem;
+}
+
 /* Reusable stacked-card system (homepage now, easy to reuse elsewhere) */
 .card-stack {
   position: relative;
   --stack-shift: 0px;
-  --stack-pin: 0px;
-  --stack-reveal: 32px;
+  --stack-reveal: 18px;
   padding-bottom: 3rem;
 }
 
 .stack-card {
-  position: relative;
-  transform: translateY(var(--stack-pin));
+  position: sticky;
+  top: calc(#{$header-height} + 0.75rem);
   will-change: transform;
 }
 
@@ -110,7 +113,8 @@ body {
 
 .card-stack .stack-card + .stack-card {
   z-index: 20;
-  transform: translateY(calc(var(--stack-pin) - var(--stack-shift)));
+  top: calc(#{$header-height} + 0.75rem + var(--stack-reveal));
+  transform: translateY(calc(-1 * var(--stack-shift)));
 }
 
 /* Hero Section Styles */
@@ -122,7 +126,7 @@ body {
   align-items: center;
   position: relative;
   /* hero-section is now the primary card */
-  background: rgba($surface-2, 0.98);
+  background: rgba($surface-2, 0.99);
   width: calc(100% - 3rem);
   margin: 0 auto;
   border-radius: 12px;
@@ -203,7 +207,7 @@ body {
   object-fit: cover;
   border: 3px solid $accent;
   box-shadow: 0 12px 30px rgba(0,0,0,0.45);
-  animation: float 6s ease-in-out infinite;
+  animation: none;
 }
 
 @keyframes float {
@@ -309,7 +313,7 @@ body {
 /* Research Section */
 .research-section {
   padding: 1.25rem 1.5rem;  /* Match hero-section padding for consistent width */
-  background: rgba($surface-2, 0.98);  /* Solid tile background */
+  background: rgba($surface-2, 0.99);  /* Solid tile background */
   border: 1px solid rgba($accent, 0.18);  /* Tile border like research-tile */
   border-radius: 12px;  /* Rounded corners like tiles */
   box-shadow: $elevation-1;  /* Elevation like tiles */
@@ -400,7 +404,7 @@ body {
 
 /* Research Tile Styles */
 .research-tile {
-  background: rgba($surface-2, 0.98);
+  background: rgba($surface-2, 0.99);
   border: 1px solid rgba($accent, 0.18);
   border-radius: 12px;
   margin: 2rem 0;
@@ -417,7 +421,7 @@ body {
 }
 
 .research-tile.expanded {
-  background: rgba($surface-2, 0.995);
+  background: rgba($surface-2, 1);
 }
 
 .tile-header {
@@ -635,11 +639,16 @@ footer {
   .card-stack {
     padding-bottom: 1.25rem;
     --stack-shift: 0px;
-    --stack-pin: 0px;
+  }
+
+  #main_content {
+    padding-top: 0.5rem;
   }
 
   .stack-card,
   .card-stack .stack-card + .stack-card {
+    position: relative;
+    top: auto;
     transform: none;
   }
 
