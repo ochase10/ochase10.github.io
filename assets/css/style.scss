@@ -96,16 +96,13 @@ body {
 /* Reusable stacked-card system (homepage now, easy to reuse elsewhere) */
 .card-stack {
   position: relative;
-  --stack-shift: 0px;
-  --stack-reveal: 12px;
-  --stack-tail: 0px;
-  padding-bottom: calc(3rem + var(--stack-tail));
+  --hero-space: clamp(390px, 50vh, 560px);
+  padding-top: var(--hero-space);
+  padding-bottom: 2rem;
 }
 
 .stack-card {
-  position: sticky;
-  top: calc(#{$header-height} + 0.5rem);
-  will-change: transform;
+  position: relative;
 }
 
 .card-stack .stack-card:first-of-type {
@@ -114,8 +111,7 @@ body {
 
 .card-stack .stack-card + .stack-card {
   z-index: 20;
-  top: calc(#{$header-height} + 0.5rem + var(--stack-reveal));
-  transform: translateY(calc(-1 * var(--stack-shift)));
+  margin-top: -2rem;
 }
 
 /* Hero Section Styles */
@@ -385,6 +381,20 @@ body {
   opacity: 1;
   transition: none;
   pointer-events: auto;
+}
+
+@media (min-width: 769px) {
+  .hero-section {
+    position: fixed;
+    top: calc(#{$header-height} + 0.5rem);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 15;
+  }
+
+  .card-stack .stack-card + .stack-card {
+    margin-top: 1.25rem;
+  }
 }
 
 .research-section::before {
@@ -696,8 +706,9 @@ footer {
 /* Media query styles for responsive design */
 @media (max-width: 768px) {
   .card-stack {
+    --hero-space: 0px;
+    padding-top: 0;
     padding-bottom: 1.25rem;
-    --stack-shift: 0px;
   }
 
   #main_content {
@@ -709,6 +720,7 @@ footer {
     position: relative;
     top: auto;
     transform: none;
+    margin-top: 0;
   }
 
   header {

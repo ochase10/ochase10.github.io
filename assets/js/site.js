@@ -110,12 +110,8 @@
     const cards = Array.from(stack.querySelectorAll('[data-card]'));
     if (cards.length < 2) return;
 
-    const firstCard = cards[0];
-    const secondCard = cards[1];
+    const researchSection = document.getElementById('research-section');
     const scrollIndicator = document.querySelector('.scroll-indicator');
-    let metrics = null;
-    let ticking = false;
-
     function isTextInputActive(){
       const el = document.activeElement;
       if (!el) return false;
@@ -123,107 +119,22 @@
       return tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || el.isContentEditable;
     }
 
-    function toPageY(el){
-      return window.scrollY + el.getBoundingClientRect().top;
-    }
-
-    function readStackRevealPx(){
-      const raw = getComputedStyle(stack).getPropertyValue('--stack-reveal').trim();
-      const parsed = Number.parseFloat(raw.replace('px', ''));
-      return Number.isFinite(parsed) ? parsed : 12;
-    }
-
-    function isDesktop(){
-      return window.matchMedia('(min-width: 769px)').matches;
-    }
-
-    function measure(){
-      stack.style.setProperty('--stack-shift', '0px');
-      stack.style.setProperty('--stack-tail', '0px');
-      if (!isDesktop()){
-        metrics = null;
-        return;
-      }
-
-      const firstTop = toPageY(firstCard);
-      const header = document.querySelector('header');
-      const headerOffset = (header ? header.offsetHeight : 64) + 16;
-      const reveal = readStackRevealPx();
-      const maxShift = Math.max(0, firstCard.offsetHeight - reveal);
-      const tail = Math.max(
-        window.innerHeight * 2,
-        firstCard.offsetHeight + secondCard.offsetHeight + headerOffset + 160
-      );
-
-      stack.style.setProperty('--stack-tail', tail + 'px');
-
-      // Start stacking as soon as the first card reaches the sticky ceiling.
-      // This keeps visible relative motion while both cards are pinned in-frame.
-      const start = Math.max(0, firstTop - headerOffset);
-      const end = start + maxShift;
-
-      metrics = { start, end, maxShift };
-    }
-
-    function render(){
-      if (!metrics){
-        stack.style.setProperty('--stack-shift', '0px');
-        return;
-      }
-
-      const span = Math.max(1, metrics.end - metrics.start);
-      const progress = Math.min(1, Math.max(0, (window.scrollY - metrics.start) / span));
-      const shift = metrics.maxShift * progress;
-      stack.style.setProperty('--stack-shift', shift + 'px');
-
-      if (scrollIndicator){
-        const shouldHide = progress > 0.08;
-        scrollIndicator.style.opacity = shouldHide ? '0' : '1';
-        scrollIndicator.style.pointerEvents = shouldHide ? 'none' : 'auto';
-      }
-    }
-
-    function scrollToStacked(){
-      if (!metrics) measure();
-      if (!metrics) return;
-      window.scrollTo({ top: metrics.end, behavior: 'smooth' });
-    }
-
-    function onKeyDown(e){
-      const isDown = e.key === 'ArrowDown' || e.key === ' ' || e.code === 'Space';
-      if (!isDown || isTextInputActive()) return;
-      if (!metrics) measure();
-      if (!metrics) return;
-
-      const threshold = 10;
-      if (window.scrollY < metrics.end - threshold){
-        e.preventDefault();
-        window.scrollTo({ top: metrics.end, behavior: 'smooth' });
+    function scrollToResearch(){
+      if (researchSection){
+        researchSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }
 
     if (scrollIndicator){
-      scrollIndicator.addEventListener('click', function(){
-        scrollToStacked();
-      });
+      scrollIndicator.addEventListener('click', scrollToResearch);
     }
 
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(() => {
-        render();
-        ticking = false;
-      });
-    };
-    const onResize = () => { measure(); render(); };
-
-    window.addEventListener('keydown', onKeyDown, { passive: false });
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onResize);
-
-    measure();
-    render();
+    window.addEventListener('keydown', function(e){
+      const isDown = e.key === 'ArrowDown' || e.key === ' ' || e.code === 'Space';
+      if (!isDown || isTextInputActive()) return;
+      e.preventDefault();
+      scrollToResearch();
+    }, { passive: false });
   }
 
   document.addEventListener('DOMContentLoaded', function(){
