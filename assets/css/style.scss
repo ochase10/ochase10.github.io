@@ -125,6 +125,15 @@ body {
   position: relative;
 }
 
+/* Solid card behind the hero content to hold profile and name */
+.hero-content {
+  background: $surface-2;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: $elevation-1;
+  border: 1px solid rgba(255,107,53,0.06);
+}
+
 .hero-inner {
   width: 100%;
   display: flex;
