@@ -57,18 +57,6 @@ header_subtitle: NSF GRFP Fellow in Astronomy at the University of Texas at Aust
 </section>
 
 <script>
-// Dynamic header shrinking on scroll
-window.addEventListener('scroll', function() {
-    const header = document.querySelector('header');
-    const scrollY = window.scrollY;
-    
-    if (scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
-
 // Research section fade animation on scroll
 const observerOptions = {
     threshold: 0.15,

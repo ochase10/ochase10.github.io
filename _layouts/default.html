@@ -26,23 +26,17 @@
   <body>
 
     <header id="main-header">
-      <div class="container">
-        <div class="header-title-section">
-          <a id="a-title" href="{{ '/' | relative_url }}">
-            <h1>{{ page.title | default: "Owen Chase" }}</h1>
-          </a>
-        </div>
-        <div class="header-buttons">
-          <div class="header-buttons-left">
-            <a href="{{ '/research' | relative_url }}" class="btn">Research</a>
-            <!--
-            <a href="{{ '/page2' | relative_url }}" class="btn">Page 2</a>
-                    -->
-          </div>
-          <div class="header-buttons-right">
-            <a href="https://docs.google.com/document/d/1sxSIUc1SHd6dxjpGNuxTeqvKMAwkUhzuQel3CqaHADE/preview" class="btn cv-btn" target="_blank">CV</a>
-          </div>
-        </div>
+      <div class="container header-shell">
+        <a class="site-brand" href="{{ '/' | relative_url }}">
+          <span class="site-brand-main">Owen Chase</span>
+          {% if page.header_subtitle %}
+          <span class="site-brand-subtitle">{{ page.header_subtitle }}</span>
+          {% endif %}
+        </a>
+        <nav class="header-nav" aria-label="Main navigation">
+          <a href="{{ '/research' | relative_url }}" class="nav-link">Research</a>
+          <a href="https://docs.google.com/document/d/1sxSIUc1SHd6dxjpGNuxTeqvKMAwkUhzuQel3CqaHADE/preview" class="nav-link nav-link-cv" target="_blank" rel="noopener noreferrer">CV</a>
+        </nav>
       </div>
     </header>
 
