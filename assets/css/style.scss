@@ -285,7 +285,13 @@ body {
 /* Research Section */
 .research-section {
   padding: 3rem 2rem;
-  background: transparent; /* let page background show through */
+  background: rgba($surface-2, 0.95);  /* Solid tile background */
+  border: 1px solid rgba($accent, 0.18);  /* Tile border like research-tile */
+  border-radius: 12px;  /* Rounded corners like tiles */
+  box-shadow: $elevation-1;  /* Elevation like tiles */
+  backdrop-filter: blur(10px);  /* Glass-morphism like tiles */
+  width: calc(100% - 3rem);
+  margin: 0 auto;
   position: relative;
   overflow: visible;
   z-index: 2;  /* Ensure it's above the background image */
