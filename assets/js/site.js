@@ -148,9 +148,11 @@
       const headerOffset = (header ? header.offsetHeight : 64) + 16;
       const reveal = readStackRevealPx();
       const maxShift = Math.max(0, Math.round(firstCard.offsetHeight - reveal));
+      const secondTop = toPageY(secondCard);
+      const secondStickyOffset = headerOffset + reveal;
 
-      // Start stacking as the first card reaches the header threshold.
-      const start = Math.max(0, firstTop - headerOffset);
+      // Start stacking once the second card reaches its sticky anchor.
+      const start = Math.max(0, secondTop - secondStickyOffset);
       const end = start + maxShift;
 
       metrics = { start, end, maxShift };
