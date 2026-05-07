@@ -93,6 +93,10 @@ body {
   padding-top: 0.75rem;
 }
 
+:root {
+  --tile-width: min(960px, calc(100% - 3rem));
+}
+
 /* Reusable stacked-card system (homepage now, easy to reuse elsewhere) */
 .card-stack {
   position: relative;
@@ -123,13 +127,13 @@ body {
   align-items: center;
   position: relative;
   background: rgba($surface-2, 0.99);
-  width: calc(100% - 3rem);
-  max-width: 1100px;
+  width: var(--tile-width);
   margin: 0 auto;
   border-radius: 12px;
-  padding: 1.1rem 1.25rem 1rem;
+  padding: 1.35rem 1.25rem 1rem;
   box-shadow: $elevation-1;
   border: 1px solid rgba($accent, 0.18);
+  border-top: 3px solid rgba($accent, 0.45);
   backdrop-filter: blur(10px);
   overflow: visible;
 }
@@ -139,8 +143,8 @@ body {
   align-items: center;
   justify-content: center;
   gap: 2.25rem;
-  width: calc(100% - 3rem);
-  max-width: 1100px;
+  width: 100%;
+  max-width: 960px;
   padding: 0 1rem;
   z-index: 2;
   position: relative;
@@ -388,11 +392,22 @@ body {
 @media (min-width: 769px) {
   .hero-section {
     position: fixed;
-    top: calc(#{$header-height} + 1rem);
+    top: calc(#{$header-height} + 1.25rem);
     left: 50%;
     transform: translateX(-50%);
-    width: min(calc(100% - 3rem), 1100px);
+    width: var(--tile-width);
     z-index: 15;
+  }
+
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    left: 1.25rem;
+    right: 1.25rem;
+    top: 0.45rem;
+    height: 1px;
+    background: rgba($accent, 0.35);
+    pointer-events: none;
   }
 
   .card-stack .stack-card + .stack-card {
