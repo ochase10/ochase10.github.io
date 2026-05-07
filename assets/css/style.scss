@@ -127,7 +127,7 @@ body {
   max-width: 1100px;
   margin: 0 auto;
   border-radius: 12px;
-  padding: 0.9rem 1.25rem;
+  padding: 1.1rem 1.25rem 1rem;
   box-shadow: $elevation-1;
   border: 1px solid rgba($accent, 0.18);
   backdrop-filter: blur(10px);
@@ -375,6 +375,7 @@ body {
   box-shadow: $elevation-1;  /* Elevation like tiles */
   backdrop-filter: blur(10px);  /* Glass-morphism like tiles */
   width: calc(100% - 3rem);
+  max-width: 1100px;
   margin: 3rem auto 0 auto;  /* initial separation before stack transform */
   position: relative;
   overflow: visible;
