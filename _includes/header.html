@@ -1,0 +1,21 @@
+<header id="main-header">
+  <div class="container header-shell">
+    <div class="site-brand">
+      <span class="site-brand-main">Owen Chase</span>
+      {% if page.header_subtitle %}
+      <span class="site-brand-subtitle">{{ page.header_subtitle }}</span>
+      {% endif %}
+    </div>
+
+    <nav class="header-nav" aria-label="Main navigation">
+      <a href="{{ '/' | relative_url }}" class="nav-link">Home</a>
+      <a href="{{ '/research' | relative_url }}" class="nav-link">Research</a>
+      {% if page.header_buttons %}
+        {% for button in page.header_buttons %}
+          <a href="{{ button.url | relative_url }}" class="nav-link">{{ button.text }}</a>
+        {% endfor %}
+      {% endif %}
+      <a href="https://docs.google.com/document/d/1sxSIUc1SHd6dxjpGNuxTeqvKMAwkUhzuQel3CqaHADE/preview" class="nav-link nav-link-cv" target="_blank" rel="noopener noreferrer">CV</a>
+    </nav>
+  </div>
+</header>

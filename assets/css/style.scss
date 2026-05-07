@@ -1,6 +1,7 @@
 ---
 ---
 
+@import 'tokens';
 @import 'jekyll-theme-hacker';
 
 /* Header modifications for dynamic scroll effect */
@@ -8,17 +9,17 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 15vh;
+  height: 12vh;
   z-index: 1000;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  background: rgba(21, 21, 21, 0.9);
-  backdrop-filter: blur(10px);
+  transition: all 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background: rgba(30, 30, 30, 0.9);
+  backdrop-filter: blur(8px);
 }
 
 header.scrolled {
-  height: 9vh;
-  background: rgba(21, 21, 21, 0.95);
-  box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  height: 7vh;
+  background: rgba(24, 24, 24, 0.96);
+  box-shadow: 0 2px 18px rgba(0,0,0,0.35);
 }
 
 /* Dynamic header sizing - horizontal layout with title and buttons in same row */
@@ -81,18 +82,18 @@ header h2 {
 
 /* Ensure body has top padding to account for fixed header */
 body {
-  padding-top: 15vh;
+  padding-top: 12vh;
 }
 
 /* Hero Section Styles */
 .hero-section {
-  height: 85vh;  /* Further reduced to ensure scroll arrow is fully visible */
+  min-height: 58vh; /* compact hero to reduce excess vertical space */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #151515 100%);
+  background: linear-gradient(135deg, $surface 0%, $surface-2 50%);
   background-attachment: fixed;
   overflow: hidden;
 }
@@ -118,11 +119,40 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4rem;
+  gap: 2.25rem;
   max-width: 1200px;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
   z-index: 2;
   position: relative;
+}
+
+.hero-inner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.25rem;
+}
+
+.hero-contact {
+  margin-top: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.contact-links img {
+  width: 28px;
+  height: 28px;
+  display: inline-block;
+  filter: grayscale(0.2) contrast(1.05);
+}
+
+.contact-email {
+  color: $muted;
+  font-size: 0.95rem;
+  margin-left: 0.25rem;
 }
 
 .hero-image {
@@ -130,11 +160,11 @@ body {
 }
 
 .profile-img {
-  width: 300px;
-  height: 300px;
+  width: $profile-size-md;
+  height: $profile-size-md;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #ff6b35;
+  border: 3px solid $accent;
   box-shadow: 0 0 30px rgba(255, 107, 53, 0.3);
   animation: float 6s ease-in-out infinite;
 }
@@ -149,26 +179,26 @@ body {
 }
 
 .hero-title {
-  font-size: 4rem !important;  /* Added !important to override theme styles */
+  font-size: 3.2rem !important;
   margin: 0 0 1rem 0;
-  color: #ff6b35;
+  color: $accent;
   text-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
   animation: slideInRight 1s ease-out;
 }
 
 .hero-subtitle {
-  font-size: 2rem !important;  /* Added !important to override theme styles */
+  font-size: 1.25rem !important;
   margin: 0 0 1.5rem 0;
-  color: #fff;
+  color: $muted;
   opacity: 0.9;
   animation: slideInRight 1s ease-out 0.3s both;
 }
 
 .hero-description {
-  font-size: 1.5rem !important;  /* Added !important to override theme styles */
-  color: #ccc;
-  line-height: 1.6;
-  animation: slideInRight 1s ease-out 0.6s both;
+  font-size: 1.05rem !important;
+  color: $muted;
+  line-height: 1.5;
+  animation: slideInRight 0.85s ease-out 0.3s both;
 }
 
 @keyframes slideInRight {
@@ -354,13 +384,33 @@ body {
 }
 
 .tile-content {
-  max-height: 3rem;  /* Show just the first paragraph when collapsed */
+  --collapsed-height: 3.2rem;
+  max-height: var(--collapsed-height);  /* Show just the first paragraph when collapsed */
   overflow: hidden;
-  transition: max-height 0.5s ease;
+  transition: max-height 0.45s cubic-bezier(.2,.8,.2,1);
 }
 
 .tile-content.expanded {
-  max-height: 1000px;
+  max-height: 2000px; /* JS will set exact scrollHeight inline for smoothness */
+}
+
+/* Media support inside tiles */
+.tile-media {
+  margin: 1rem 0;
+  max-width: 100%;
+}
+
+.tile-media img {
+  width: 100%;
+  height: auto;
+  border-radius: $radius;
+  display: block;
+}
+
+/* Ensure focus outlines for keyboard users */
+.research-tile:focus-within, .research-tile:focus {
+  box-shadow: 0 8px 28px rgba(0,0,0,0.45), 0 0 0 3px rgba(255,107,53,0.06) inset;
+  outline: none;
 }
 
 .tile-content .tile-preview {

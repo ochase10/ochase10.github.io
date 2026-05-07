@@ -25,20 +25,7 @@
 
   <body>
 
-    <header id="main-header">
-      <div class="container header-shell">
-        <a class="site-brand" href="{{ '/' | relative_url }}">
-          <span class="site-brand-main">Owen Chase</span>
-          {% if page.header_subtitle %}
-          <span class="site-brand-subtitle">{{ page.header_subtitle }}</span>
-          {% endif %}
-        </a>
-        <nav class="header-nav" aria-label="Main navigation">
-          <a href="{{ '/research' | relative_url }}" class="nav-link">Research</a>
-          <a href="https://docs.google.com/document/d/1sxSIUc1SHd6dxjpGNuxTeqvKMAwkUhzuQel3CqaHADE/preview" class="nav-link nav-link-cv" target="_blank" rel="noopener noreferrer">CV</a>
-        </nav>
-      </div>
-    </header>
+    {% include header.html %}
 
     <div class="container">
       <section id="main_content">
@@ -71,29 +58,7 @@
       </div>
     </footer>
 
-    <script>
-      // Header scroll effect with smooth transition
-      const mainHeader = document.getElementById('main-header');
-      let lastScrollTop = 0;
-      
-      window.addEventListener('scroll', function() {
-        const scrolled = window.scrollY;
-        
-        // Apply scrolled state when user scrolls down
-        if (scrolled > 80) {
-          mainHeader.classList.add('scrolled');
-        } else {
-          mainHeader.classList.remove('scrolled');
-        }
-        lastScrollTop = scrolled;
-      }, false);
-
-      // JavaScript to make all external links open in a new tab
-      document.querySelectorAll('a[href^="http"]').forEach(link => {
-        link.setAttribute('target', '_blank');
-        link.setAttribute('rel', 'noopener noreferrer');
-      });
-    </script>
+    <script src="{{ '/assets/js/site.js?v=' | append: site.github.build_revision | relative_url }}"></script>
 
 
   </body>

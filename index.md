@@ -6,34 +6,36 @@ header_subtitle: NSF GRFP Fellow in Astronomy at the University of Texas at Aust
 
 <!-- Hero Section -->
 <section class="hero-section">
-    <div class="hero-content">
-        <div class="hero-image">
-            <img src="assets/images/headshot.jpg" alt="Owen Chase" class="profile-img">
-        </div>
-        <div class="hero-text">
-            <h1 class="hero-title">Owen Chase</h1>
-            <p class="hero-subtitle">NSF GRFP Fellow in Astronomy</p>
-            <p class="hero-description">Working at the intersection of big data and theory to understand the past, present, and future of the cosmos</p>
-        </div>
-    </div>
-    <div class="contact-section">
-        <div class="contact-links">
-            <a href="https://ui.adsabs.harvard.edu/public-libraries/gQi7T4KZQ_WK4oebPVY8-g" target="_blank" rel="noopener noreferrer" title="View my ADS library">
-                <img src="assets/images/ads_icon.svg" alt="ADS" />
-            </a>
-            <a href="https://github.com/ochase10" target="_blank" rel="noopener noreferrer" title="GitHub profile">
-                <img src="assets/images/github_icon.png" alt="GitHub" /> 
-            </a>
-            <a href="https://www.linkedin.com/in/owen-chase-86503622a/" target="_blank" rel="noopener noreferrer" title="LinkedIn profile">
-                <img src="assets/images/linkedin_icon.png" alt="LinkedIn" />
-            </a>
-        </div>
-        <div class="contact-email">
-            owen.chase [at] utexas.edu
-        </div>
-    </div>
-    <div class="scroll-indicator">
-        <div class="scroll-arrow"></div>
+    <div class="hero-inner">
+      <div class="hero-content">
+          <div class="hero-image">
+              <img src="assets/images/headshot.jpg" alt="Owen Chase" class="profile-img">
+          </div>
+          <div class="hero-text">
+              <h1 class="hero-title">Owen Chase</h1>
+              <p class="hero-subtitle">NSF GRFP Fellow in Astronomy</p>
+              <p class="hero-description">Working at the intersection of big data and theory to understand the past, present, and future of the cosmos</p>
+              <div class="hero-contact">
+                <div class="contact-links">
+                    <a href="https://ui.adsabs.harvard.edu/public-libraries/gQi7T4KZQ_WK4oebPVY8-g" target="_blank" rel="noopener noreferrer" title="View my ADS library">
+                        <img src="assets/images/ads_icon.svg" alt="ADS" />
+                    </a>
+                    <a href="https://github.com/ochase10" target="_blank" rel="noopener noreferrer" title="GitHub profile">
+                        <img src="assets/images/github_icon.png" alt="GitHub" /> 
+                    </a>
+                    <a href="https://www.linkedin.com/in/owen-chase-86503622a/" target="_blank" rel="noopener noreferrer" title="LinkedIn profile">
+                        <img src="assets/images/linkedin_icon.png" alt="LinkedIn" />
+                    </a>
+                </div>
+                <div class="contact-email">
+                    owen.chase [at] utexas.edu
+                </div>
+              </div>
+          </div>
+      </div>
+      <div class="scroll-indicator">
+          <div class="scroll-arrow"></div>
+      </div>
     </div>
 </section>
 
