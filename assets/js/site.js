@@ -111,6 +111,7 @@
     if (cards.length < 2) return;
 
     const firstCard = cards[0];
+    const secondCard = cards[1];
     const scrollIndicator = document.querySelector('.scroll-indicator');
     let metrics = null;
     let ticking = false;
@@ -149,7 +150,10 @@
       const headerOffset = (header ? header.offsetHeight : 64) + 16;
       const reveal = readStackRevealPx();
       const maxShift = Math.max(0, firstCard.offsetHeight - reveal);
-      const tail = Math.max(window.innerHeight * 0.85, maxShift + headerOffset + 80);
+      const tail = Math.max(
+        window.innerHeight * 2,
+        firstCard.offsetHeight + secondCard.offsetHeight + headerOffset + 160
+      );
 
       stack.style.setProperty('--stack-tail', tail + 'px');
 
