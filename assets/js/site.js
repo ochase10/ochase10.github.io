@@ -2,23 +2,7 @@
 (function(){
   'use strict';
 
-  const HEADER_SCROLL_THRESHOLD = 60;
-
-  function onScroll() {
-    const header = document.getElementById('main-header');
-    if (!header) return;
-    if (window.scrollY > HEADER_SCROLL_THRESHOLD) header.classList.add('scrolled');
-    else header.classList.remove('scrolled');
-  }
-
-  // Throttle helper
-  function throttle(fn, wait){
-    let last = 0;
-    return function(){
-      const now = Date.now();
-      if (now - last >= wait){ fn(); last = now; }
-    };
-  }
+  // Header will be static; no scroll-driven class toggling.
 
   function enhanceExternalLinks(){
     document.querySelectorAll('a[href^="http"]').forEach(link => {
@@ -39,9 +23,16 @@
       const content = section.querySelector('.tile-content');
       if (!content) return;
 
+      // Capture and store the initial collapsed max-height (from CSS) for reliable collapse
+      const initialCollapsed = getComputedStyle(content).getPropertyValue('max-height');
+      if (!initialCollapsed || initialCollapsed === 'none'){
+        content.dataset.collapsed = '3.2rem';
+      } else {
+        content.dataset.collapsed = initialCollapsed;
+      }
       // Ensure starting collapsed state has explicit maxHeight for predictable animation
       if (!section.classList.contains('expanded')){
-        content.style.maxHeight = getComputedStyle(content).getPropertyValue('max-height');
+        content.style.maxHeight = content.dataset.collapsed;
       }
 
       // Toggle helper to expand/collapse section
@@ -56,7 +47,8 @@
           section.setAttribute('aria-expanded','true');
         } else {
           // collapse
-          content.style.maxHeight = getCollapsedMaxHeight(content) || '3.2rem';
+          const collapsedVal = content.dataset.collapsed || getCollapsedMaxHeight(content) || '3.2rem';
+          content.style.maxHeight = collapsedVal;
           section.classList.remove('expanded');
           content.classList.remove('expanded');
           content.setAttribute('aria-hidden','true');
@@ -97,12 +89,8 @@
 
   document.addEventListener('DOMContentLoaded', function(){
     // initial behaviors
-    onScroll();
     enhanceExternalLinks();
     setupResearchTiles();
-
-    // attach scroll listener
-    window.addEventListener('scroll', throttle(onScroll, 100));
   });
 
 })();
